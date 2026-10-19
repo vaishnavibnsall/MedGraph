@@ -25,6 +25,9 @@ data/processed/*
 # ---- node / frontend ----
 node_modules/
 frontend/dist/
+frontend/vite.config.js
+frontend/vite.config.d.ts
+frontend/tsconfig.tsbuildinfo
 *.log
 npm-debug.log*
 
