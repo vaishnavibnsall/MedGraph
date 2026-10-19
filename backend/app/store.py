@@ -66,6 +66,11 @@ class Store:
             self.G = nx.Graph()
         self.name_map = dict(zip(self.physicians["npi"], self.physicians["display_name"])) \
             if len(self.physicians) else {}
+        # trial-investigator nodes that couldn't resolve to a paid-recipient NPI are
+        # keyed as `OBS:<NAME>`; give them a readable label for the frontend.
+        for n in self.G.nodes():
+            if isinstance(n, str) and n.startswith("OBS:"):
+                self.name_map.setdefault(n, n[4:].replace("_", " ").title())
 
         self.stats = {
             "physicians": int(len(self.physicians)),
