@@ -1,0 +1,43 @@
+# ---- python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# ---- data: large raw + regenerated artifacts are NOT committed ----
+# The full CMS Open Payments files are GBs; we regenerate them via the pipeline.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.pkl
+*.parquet
+
+# keep a small committed sample so the app is demonstrable offline
+!data/sample/
+
+# ---- node / frontend ----
+node_modules/
+frontend/dist/
+*.log
+npm-debug.log*
+
+# ---- os / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ---- misc ----
+build.log
+tools/recon*.py
+tools/throughput.py
+tools/pi_analysis.py
+tools/validate_general.py
